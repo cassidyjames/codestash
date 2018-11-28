@@ -38,7 +38,6 @@ public class MainWindow : Gtk.Window {
 
         var search_entry = new Gtk.SearchEntry ();
         search_entry.placeholder_text = "Search Stashes";
-        search_entry.sensitive = false;
 
         var header = new Gtk.HeaderBar ();
         header.show_close_button = true;
@@ -48,12 +47,28 @@ public class MainWindow : Gtk.Window {
 
         var header_context = header.get_style_context ();
 
+        var fake_stash = new Gtk.Label ("public MainWindow (Gtk.Application application) {\n\tObject (");
+        fake_stash.margin = 12;
+
+        var sidebar_list = new Gtk.ListBox ();
+        sidebar_list.activate_on_single_click = true;
+        sidebar_list.selection_mode = Gtk.SelectionMode.SINGLE;
+        sidebar_list.vexpand = true;
+        sidebar_list.get_style_context ().add_class ("monospace");
+        sidebar_list.add (fake_stash);
+
+        var sidebar = new Gtk.ScrolledWindow (null, null);
+        sidebar.hscrollbar_policy = Gtk.PolicyType.NEVER;
+        sidebar.width_request = 300;
+        sidebar.add (sidebar_list);
+
         var hello = new Gtk.Label ("Hello");
 
         var main_layout = new Gtk.Grid ();
         main_layout.column_spacing = main_layout.row_spacing = 12;
-        main_layout.margin_bottom = main_layout.margin_start = main_layout.margin_end = 12;
+        main_layout.margin_end = 12;
 
+        main_layout.add (sidebar);
         main_layout.add (hello);
 
         var context = get_style_context ();
