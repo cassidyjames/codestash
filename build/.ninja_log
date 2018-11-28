@@ -1,0 +1,7 @@
+# ninja log v5
+0	269	1543439787	com.github.cassidyjames.codestash@exe/src/Application.c	63d53fae9a715820
+0	269	1543439787	com.github.cassidyjames.codestash@exe/src/MainWindow.c	63d53fae9a715820
+269	485	1543439787	com.github.cassidyjames.codestash@exe/meson-generated_src_MainWindow.c.o	e8f0e3e12ebb78cc
+269	498	1543439787	com.github.cassidyjames.codestash@exe/meson-generated_src_Application.c.o	b55aef4497e8e8a5
+498	583	1543439788	com.github.cassidyjames.codestash	120abe55f1d2cfd8
+1	325	0	meson-install	9bd7faa9472bf40f

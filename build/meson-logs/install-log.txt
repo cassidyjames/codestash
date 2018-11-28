@@ -1,0 +1,4 @@
+# List of files installed by Meson
+# Does not contain files installed by custom scripts.
+/usr/bin/com.github.cassidyjames.codestash
+/usr/share/glib-2.0/schemas/com.github.cassidyjames.codestash.gschema.xml
