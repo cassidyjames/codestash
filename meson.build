@@ -2,8 +2,15 @@ project('com.github.cassidyjames.codestash', 'vala', 'c')
 
 gnome = import('gnome')
 
+asresources = gnome.compile_resources(
+    'as-resources', 'data/gresource.xml',
+    source_dir: 'data',
+    c_name: 'as'
+)
+
 executable(
     meson.project_name(),
+    asresources,
     'src/Application.vala',
     'src/MainWindow.vala',
     dependencies: [

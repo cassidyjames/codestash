@@ -85,6 +85,11 @@ public class CodeStash : Gtk.Application {
             quit_action.activate (null);
         });
 
+        // CSS provider
+        var provider = new Gtk.CssProvider ();
+        provider.load_from_resource ("/com/github/cassidyjames/codestash/Application.css");
+        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
         Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
         main_window.show_all ();
     }
