@@ -38,6 +38,7 @@ public class MainWindow : Gtk.Window {
 
         var search_entry = new Gtk.SearchEntry ();
         search_entry.placeholder_text = "Search Stashes";
+        search_entry.valign = Gtk.Align.CENTER;
 
         var header = new Gtk.HeaderBar ();
         header.show_close_button = true;
