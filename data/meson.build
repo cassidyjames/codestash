@@ -4,3 +4,8 @@ install_data (
     rename: meson.project_name () + '.gschema.xml'
 )
 
+install_data (
+    'launcher.desktop',
+    install_dir: join_paths (get_option ('datadir'), 'applications'),
+    rename: meson.project_name () + '.desktop'
+)

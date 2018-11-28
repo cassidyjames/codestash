@@ -23,7 +23,8 @@ public class MainWindow : Gtk.Window {
     public MainWindow (Gtk.Application application) {
         Object (
             application: application,
-            icon_name: CodeStash.instance.application_id,
+            // icon_name: CodeStash.instance.application_id,
+            icon_name: "edit-copy",
             resizable: true,
             title: "CodeStash"
         );

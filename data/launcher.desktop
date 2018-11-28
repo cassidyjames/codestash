@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=CodeStash
+GenericName=Code Clipboard Manager
+Comment=Stash code while you work for peace of mind
+Categories=Utility;Development;TextTools;TextEditor;GTK;
+Exec=com.github.cassidyjames.codestash
+Icon=edit-copy
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=com.github.cassidyjames.codestash
+Keywords=source;copy;cut;note;clipboard;programming;
+
