@@ -24,14 +24,27 @@ public class MainWindow : Gtk.Window {
         Object (
             application: application,
             icon_name: CodeStash.instance.application_id,
-            resizable: false,
+            resizable: true,
             title: "CodeStash"
         );
     }
 
     construct {
+        set_size_request (910, 640);
+
+        var delete_button = new Gtk.Button.from_icon_name ("edit-delete", Gtk.IconSize.LARGE_TOOLBAR);
+
+        var edit_button = new Gtk.Button.from_icon_name ("edit", Gtk.IconSize.LARGE_TOOLBAR);
+
+        var search_entry = new Gtk.SearchEntry ();
+        search_entry.placeholder_text = "Search Stashes";
+        search_entry.sensitive = false;
+
         var header = new Gtk.HeaderBar ();
         header.show_close_button = true;
+        header.pack_start (delete_button);
+        header.pack_start (edit_button);
+        header.pack_end (search_entry);
 
         var header_context = header.get_style_context ();
 
