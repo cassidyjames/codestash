@@ -49,17 +49,27 @@ public class MainWindow : Gtk.Window {
 
         var header_context = header.get_style_context ();
 
-        var fake_stash = new Gtk.Label ("public MainWindow (Gtk.Application application) {\n\tObject (");
-        fake_stash.ellipsize = Pango.EllipsizeMode.END;
-        fake_stash.margin = 12;
+        var fake_stash = new StashSummary (
+"""
+    public MainWindow (Gtk.Application application) {
+        Object (
+            application: application,
+            // icon_name: CodeStash.instance.application_id,
+            icon_name: "edit-copy",
+            resizable: true,
+            title: "CodeStash"
+        );
+    }
+"""
+        );
 
-        var fake_stash2 = new Gtk.Label ("/*\n* Copyright © 2018 Cassidy James Blaede (https://cassidyjames.com)");
-        fake_stash2.ellipsize = Pango.EllipsizeMode.END;
-        fake_stash2.margin = 12;
+        // var fake_stash2 = new Gtk.Label ("/*\n* Copyright © 2018 Cassidy James Blaede (https://cassidyjames.com)");
+        // fake_stash2.ellipsize = Pango.EllipsizeMode.END;
+        // fake_stash2.margin = 12;
 
-        var fake_stash3 = new Gtk.Label ("public override void realize () {\n\tbase.realize ();");
-        fake_stash3.ellipsize = Pango.EllipsizeMode.END;
-        fake_stash3.margin = 12;
+        // var fake_stash3 = new Gtk.Label ("public override void realize () {\n\tbase.realize ();");
+        // fake_stash3.ellipsize = Pango.EllipsizeMode.END;
+        // fake_stash3.margin = 12;
 
         var sidebar_list = new Gtk.ListBox ();
         sidebar_list.activate_on_single_click = true;
@@ -69,8 +79,8 @@ public class MainWindow : Gtk.Window {
         sidebar_list.get_style_context ().add_class ("monospace");
 
         sidebar_list.add (fake_stash);
-        sidebar_list.add (fake_stash2);
-        sidebar_list.add (fake_stash3);
+        // sidebar_list.add (fake_stash2);
+        // sidebar_list.add (fake_stash3);
 
         var hello = new Gtk.Label ("Hello");
 

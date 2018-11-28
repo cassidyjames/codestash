@@ -13,6 +13,7 @@ executable(
     asresources,
     'src/Application.vala',
     'src/MainWindow.vala',
+    'src/Widgets/StashSummary.vala',
     dependencies: [
         dependency('glib-2.0'),
         dependency('granite'),
