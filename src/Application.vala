@@ -24,7 +24,6 @@ public class CodeStash : Gtk.Application {
     public static MainWindow main_window;
 
     private uint configure_id;
-    private const uint CONFIGURE_ID_TIMEOUT = 100;
 
     public CodeStash () {
         Object (
@@ -72,7 +71,7 @@ public class CodeStash : Gtk.Application {
                 GLib.Source.remove (configure_id);
             }
 
-            configure_id = Timeout.add (CONFIGURE_ID_TIMEOUT, () => {
+            configure_id = Timeout.add (100, () => {
                 configure_id = 0;
                 save_window_geometry (main_window);
 
@@ -94,10 +93,10 @@ public class CodeStash : Gtk.Application {
         main_window.show_all ();
     }
 
-    private void save_window_geometry (Gtk.Window window, string key = "window-position") {
+    private void save_window_geometry (Gtk.Window window) {
         int root_x, root_y;
         window.get_position (out root_x, out root_y);
-        CodeStash.settings.set_value (key, new int[] { root_x, root_y });
+        CodeStash.settings.set_value ("window-position", new int[] { root_x, root_y });
     }
 
     private static int main (string[] args) {
