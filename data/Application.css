@@ -19,7 +19,7 @@
 * Authored by: Cassidy James Blaede <c@ssidyjam.es>
 */
 
-@define-color accentColor @SILVER_900;
+@define-color colorAccent @SILVER_900;
 
 row {
   border-bottom: solid 1px alpha(#fff, 0.04);
