@@ -104,8 +104,11 @@ public class MainWindow : Gtk.Window {
         sidebar_list.add (fake_stash3);
 
         var source_view = new Gtk.SourceView ();
+        source_view.auto_indent = true;
         source_view.expand = true;
+        source_view.insert_spaces_instead_of_tabs = true;
         source_view.monospace = true;
+        source_view.pixels_above_lines = source_view.pixels_below_lines = 1;
         source_view.right_margin = source_view.left_margin = 12;
         source_view.smart_backspace = true;
         source_view.smart_home_end = Gtk.SourceSmartHomeEndType.BEFORE;
