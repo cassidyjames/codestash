@@ -47,8 +47,6 @@ public class MainWindow : Gtk.Window {
         header.pack_start (new_button);
         header.pack_end (search_entry);
 
-        var header_context = header.get_style_context ();
-
         var fake_stash = new StashSummary (
 """
     public MainWindow (Gtk.Application application) {
@@ -63,24 +61,46 @@ public class MainWindow : Gtk.Window {
 """
         );
 
-        // var fake_stash2 = new Gtk.Label ("/*\n* Copyright © 2018 Cassidy James Blaede (https://cassidyjames.com)");
-        // fake_stash2.ellipsize = Pango.EllipsizeMode.END;
-        // fake_stash2.margin = 12;
+        var fake_stash2 = new StashSummary (
+"""
+    construct {
+        set_size_request (910, 640);
 
-        // var fake_stash3 = new Gtk.Label ("public override void realize () {\n\tbase.realize ();");
-        // fake_stash3.ellipsize = Pango.EllipsizeMode.END;
-        // fake_stash3.margin = 12;
+        var delete_button = new Gtk.Button.from_icon_name ("edit-delete", Gtk.IconSize.LARGE_TOOLBAR);
+
+        var new_button = new Gtk.Button.from_icon_name ("document-new", Gtk.IconSize.LARGE_TOOLBAR);
+
+        var search_entry = new Gtk.SearchEntry ();
+        search_entry.placeholder_text = "Search Stashes";
+        search_entry.valign = Gtk.Align.CENTER;
+
+        var header = new Gtk.HeaderBar ();
+        header.show_close_button = true;
+        header.pack_start (delete_button);
+        header.pack_start (new_button);
+        header.pack_end (search_entry);
+"""
+        );
+
+        var fake_stash3 = new StashSummary (
+"""
+        var sidebar_list = new Gtk.ListBox ();
+        sidebar_list.activate_on_single_click = true;
+        sidebar_list.selection_mode = Gtk.SelectionMode.SINGLE;
+        sidebar_list.vexpand = true;
+        sidebar_list.width_request = 100;
+"""
+        );
 
         var sidebar_list = new Gtk.ListBox ();
         sidebar_list.activate_on_single_click = true;
         sidebar_list.selection_mode = Gtk.SelectionMode.SINGLE;
         sidebar_list.vexpand = true;
         sidebar_list.width_request = 100;
-        sidebar_list.get_style_context ().add_class ("monospace");
 
         sidebar_list.add (fake_stash);
-        // sidebar_list.add (fake_stash2);
-        // sidebar_list.add (fake_stash3);
+        sidebar_list.add (fake_stash2);
+        sidebar_list.add (fake_stash3);
 
         var hello = new Gtk.Label ("Hello");
 

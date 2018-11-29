@@ -24,6 +24,7 @@ public class StashSummary : Gtk.Grid {
     public StashSummary (string _stash) {
         Object (
             margin: 12,
+            row_spacing: 12,
             stash: _stash
         );
     }
@@ -32,12 +33,24 @@ public class StashSummary : Gtk.Grid {
         stash = stash.chug ();
         string[] lines = stash.split ("\n");
 
+        int i = 0;
+        foreach (string line in lines) {
+            lines[i] = line.chug ();
+            i++;
+        }
+
         string preview = string.join ("\n", lines[0], lines[1]);
 
-        var label = new Gtk.Label (preview);
-        label.ellipsize = Pango.EllipsizeMode.END;
+        var preview_label = new Gtk.Label (preview);
+        preview_label.ellipsize = Pango.EllipsizeMode.END;
+        preview_label.get_style_context ().add_class ("monospace");
 
-        add (label);
+        var date_label = new Gtk.Label ("30m ago");
+        date_label.halign = Gtk.Align.START;
+        date_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+
+        attach (preview_label, 0, 0);
+        attach (date_label, 0, 1);
     }
 }
 
