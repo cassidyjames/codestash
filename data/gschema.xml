@@ -7,5 +7,17 @@
       <description>Most recent window position (x, y)</description>
     </key>
   </schema>
+  <!--<schema id="com.github.cassidyjames.codestash.stash">-->
+  <!--  <key name="content" type="s">-->
+  <!--    <default>''</default>-->
+  <!--    <summary>Stash contents</summary>-->
+  <!--    <description>The full text contents of a stash</description>-->
+  <!--  </key>-->
+  <!--  <key name="updated" type="x">-->
+  <!--    <default>0</default>-->
+  <!--    <summary>Last edited/updated</summary>-->
+  <!--    <description>The UNIX timestamp of the last edit</description>-->
+  <!--  </key>-->
+  <!--</schema>-->
 </schemalist>
 

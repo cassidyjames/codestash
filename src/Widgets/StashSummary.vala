@@ -30,27 +30,46 @@ public class StashSummary : Gtk.Grid {
     }
 
     construct {
+        // string uuid = Uuid.string_random ();
+
+        // var settings = new Settings.with_path (
+        //     App.ID + ".stash",
+        //     App.PATH + "stashes/%s/".printf (uuid)
+        // );
+
         stash = stash.chug ();
         string[] lines = stash.split ("\n");
 
-        int i = 0;
-        foreach (string line in lines) {
-            lines[i] = line.chug ();
-            i++;
+        string preview = "";
+        int preview_lines = 2;
+        for (int i = 0; i < preview_lines; i++) {
+            lines[i] = lines[i].chug ();
+            preview = string.join ("\n", preview, lines[i]);
         }
-
-        string preview = string.join ("\n", lines[0], lines[1]);
 
         var preview_label = new Gtk.Label (preview);
         preview_label.ellipsize = Pango.EllipsizeMode.END;
+        preview_label.halign = Gtk.Align.START;
+        preview_label.hexpand = true;
+        preview_label.xalign = 0;
         preview_label.get_style_context ().add_class ("monospace");
 
         var date_label = new Gtk.Label ("30m ago");
         date_label.halign = Gtk.Align.START;
         date_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
+        // var test = new Gtk.Entry ();
+        // test.halign = Gtk.Align.END;
+        // test.valign = Gtk.Align.CENTER;
+
         attach (preview_label, 0, 0);
         attach (date_label, 0, 1);
+        // attach (test, 1, 0, 1, 2);
+        // settings.bind ("content", test, "text", SettingsBindFlags.DEFAULT);
+
+        // test.changed.connect (() => {
+        //     settings.set_int64 ("updated", new  DateTime.now ().to_unix ());
+        // });
     }
 }
 

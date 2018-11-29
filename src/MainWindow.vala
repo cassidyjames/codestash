@@ -23,10 +23,9 @@ public class MainWindow : Gtk.Window {
     public MainWindow (Gtk.Application application) {
         Object (
             application: application,
-            // icon_name: CodeStash.instance.application_id,
             icon_name: "edit-copy",
             resizable: true,
-            title: "CodeStash"
+            title: App.TITLE
         );
     }
 
@@ -52,10 +51,9 @@ public class MainWindow : Gtk.Window {
     public MainWindow (Gtk.Application application) {
         Object (
             application: application,
-            // icon_name: CodeStash.instance.application_id,
             icon_name: "edit-copy",
             resizable: true,
-            title: "CodeStash"
+            title: App.TITLE
         );
     }
 """
@@ -123,7 +121,7 @@ public class MainWindow : Gtk.Window {
         paned.add2 (source_scroll);
 
         var context = get_style_context ();
-        context.add_class ("codestash");
+        context.add_class (App.TITLE);
         context.add_class ("rounded");
 
         set_titlebar (header);
@@ -133,7 +131,7 @@ public class MainWindow : Gtk.Window {
     public override void realize () {
         base.realize ();
 
-        var main_position = CodeStash.settings.get_value ("window-position");
+        var main_position = App.settings.get_value ("window-position");
         if (main_position.n_children () == 2) {
             var x = (int32) main_position.get_child_value (0);
             var y = (int32) main_position.get_child_value (1);

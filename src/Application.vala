@@ -19,31 +19,35 @@
 * Authored by: Cassidy James Blaede <c@ssidyjam.es>
 */
 
-public class CodeStash : Gtk.Application {
+public class App : Gtk.Application {
+    public const string ID = "com.github.cassidyjames.codestash";
+    public const string PATH = "/com/github/cassidyjames/codestash/";
+    public const string TITLE = "CodeStash";
+
     public static GLib.Settings settings;
     public static MainWindow main_window;
 
     private uint configure_id;
 
-    public CodeStash () {
+    public App () {
         Object (
-            application_id: "com.github.cassidyjames.codestash",
+            application_id: ID,
             flags: ApplicationFlags.FLAGS_NONE
         );
     }
 
-    public static CodeStash _instance = null;
-    public static CodeStash instance {
+    public static App _instance = null;
+    public static App instance {
         get {
             if (_instance == null) {
-                _instance = new CodeStash ();
+                _instance = new App ();
             }
             return _instance;
         }
     }
 
     static construct {
-        settings = new Settings (CodeStash.instance.application_id);
+        settings = new Settings (ID);
     }
 
     protected override void activate () {
@@ -86,7 +90,7 @@ public class CodeStash : Gtk.Application {
 
         // CSS provider
         var provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("/com/github/cassidyjames/codestash/Application.css");
+        provider.load_from_resource (PATH + "Application.css");
         Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
@@ -96,13 +100,13 @@ public class CodeStash : Gtk.Application {
     private void save_window_geometry (Gtk.Window window) {
         int root_x, root_y;
         window.get_position (out root_x, out root_y);
-        CodeStash.settings.set_value ("window-position", new int[] { root_x, root_y });
+        App.settings.set_value ("window-position", new int[] { root_x, root_y });
     }
 
     private static int main (string[] args) {
         Gtk.init (ref args);
 
-        var app = new CodeStash ();
+        var app = new App ();
         return app.run (args);
     }
 }
