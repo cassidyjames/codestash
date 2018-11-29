@@ -79,6 +79,7 @@ public class MainWindow : Gtk.Window {
         header.pack_start (delete_button);
         header.pack_start (new_button);
         header.pack_end (search_entry);
+    }
 """
         );
 
@@ -102,25 +103,28 @@ public class MainWindow : Gtk.Window {
         sidebar_list.add (fake_stash2);
         sidebar_list.add (fake_stash3);
 
-        var hello = new Gtk.Label ("Hello");
+        var source_view = new Gtk.SourceView ();
+        source_view.expand = true;
+        source_view.monospace = true;
+        source_view.right_margin = source_view.left_margin = 12;
+        source_view.smart_backspace = true;
+        source_view.smart_home_end = Gtk.SourceSmartHomeEndType.BEFORE;
+        source_view.top_margin = source_view.bottom_margin = 12;
+
+        var source_scroll = new Gtk.ScrolledWindow (null, null);
+        source_scroll.add (source_view);
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         paned.position = 200;
         paned.add1 (sidebar_list);
-        paned.add2 (hello);
-
-        var main_layout = new Gtk.Grid ();
-        main_layout.column_spacing = main_layout.row_spacing = 12;
-        main_layout.margin_end = 12;
-
-        main_layout.add (paned);
+        paned.add2 (source_scroll);
 
         var context = get_style_context ();
         context.add_class ("codestash");
         context.add_class ("rounded");
 
         set_titlebar (header);
-        add (main_layout);
+        add (paned);
     }
 
     public override void realize () {
