@@ -24,6 +24,7 @@ public class StashSummary : Gtk.Grid {
     public StashSummary (string _stash) {
         Object (
             margin: 12,
+            margin_end: 0,
             row_spacing: 12,
             stash: _stash
         );

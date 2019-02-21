@@ -117,8 +117,8 @@ public class MainWindow : Gtk.Window {
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         paned.position = 200;
-        paned.add1 (sidebar_list);
-        paned.add2 (source_scroll);
+        paned.pack1 (sidebar_list, false, false);
+        paned.pack2 (source_scroll, true, false);
 
         var context = get_style_context ();
         context.add_class (App.TITLE);
